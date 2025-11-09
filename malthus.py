@@ -13,21 +13,21 @@ L_0 = 2.0
 A_0 = 1.5
 
 
-def Y(A, L):
+def Y(A, L) -> float:
     return A * L ** (1 - BETA)
 
 
-def dot_A(L, A):
+def dot_A(L, A) -> float:
     return GAMMA * L * A**PHI - DELTA * A
 
 
-def dot_L(L, Y):
+def dot_L(L, Y) -> float:
 
     y = Y / L
     return L * f(y)
 
 
-def f(y):
+def f(y) -> float:
     if y <= 0:
         print("All humans are dead")
     return max(-0.999, min(np.log(y), N))
@@ -37,7 +37,7 @@ steps = 5
 k_grid = np.linspace(0, steps + 1, steps + 1)
 
 
-def plot_solo():
+def plot_solo() -> None:
     A_vals = [A_0]
     L_vals = [L_0]
     Y_vals = [Y(A_0, L_0)]
