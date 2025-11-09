@@ -38,23 +38,22 @@ k_grid = np.linspace(0, steps + 1, steps + 1)
 
 
 def plot_solo():
-    Y_vals = []
-
-    A_t = A_0
-    L_t = L_0
-
     A_vals = [A_0]
     L_vals = [L_0]
     Y_vals = [Y(A_0, L_0)]
 
     for t in range(steps):
-        Y_t = Y(A_vals[t], L_vals[t])
-        Y_vals.append(Y_t)
+        A_old = A_vals[t]
+        L_old = L_vals[t]
+        Y_old = Y(A_old, L_old)
 
-        A_new = A_vals[t] + dot_A(L_vals[t], A_vals[t])
+        A_new = A_old + dot_A(L_old, A_old)
+        L_new = L_old + dot_L(L_old, Y_old)
+        Y_new = Y(A_new, L_new)
+
         A_vals.append(A_new)
-        L_new = L_vals[t] + dot_L(L_vals[t], Y_t)
         L_vals.append(L_new)
+        Y_vals.append(Y_new)
 
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
 
