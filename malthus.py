@@ -61,7 +61,7 @@ def plot_solo() -> None:
 
         y_vals.append(Y_new / L_new)
 
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
+    fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(14, 6))
 
     ax1.plot(k_grid, Y_vals, label="GDP", color="orange")
     ax1.plot(k_grid, A_vals, label="Level of A", color="blue", linestyle=":")
@@ -79,6 +79,10 @@ def plot_solo() -> None:
     ax2.set_ylabel("Log Values")
     ax2.legend()
 
+    ax3.plot(k_grid, np.log(y_vals), label="GDP per capita", color="green")
+    ax3.set_xlabel("Steps")
+    ax3.set_ylabel("Log Values")
+    ax3.legend()
     plt.tight_layout()
     plt.show()
 
