@@ -9,8 +9,11 @@ DELTA = 0.05
 PHI = 0.3
 N = 0.01
 
-L_0 = 2.0
-A_0 = 1.5
+L_0 = 1.0
+A_0 = 1.0
+N_STEPS = 100
+
+k_grid = np.linspace(0, N_STEPS + 1, N_STEPS + 1)
 
 
 def Y(A, L) -> float:
@@ -31,10 +34,6 @@ def f(y) -> float:
     if y <= 0:
         print("All humans are dead")
     return max(-0.999, min(np.log(y), N))
-
-
-steps = 5
-k_grid = np.linspace(0, steps + 1, steps + 1)
 
 
 def plot_solo() -> None:
