@@ -28,9 +28,9 @@ def dot_L(L, Y):
 
 
 def f(y):
-    if y < 0:
+    if y <= 0:
         print("All humans are dead")
-    return min(y - 1, N)
+    return max(-0.999, min(np.log(y), N))
 
 
 steps = 5
