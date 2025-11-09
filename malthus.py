@@ -44,15 +44,17 @@ def plot_solo() -> None:
 
     y_vals = [Y_vals[0] / L_0]
 
-    for t in range(steps):
+    for t in range(N_STEPS):
         A_old = A_vals[t]
         L_old = L_vals[t]
-        Y_old = Y(A_old, L_old)
+        Y_old = Y_vals[t]
 
         A_new = A_old + dot_A(L_old, A_old)
         L_new = L_old + dot_L(L_old, Y_old)
         Y_new = Y(A_new, L_new)
 
+        if t == 50:
+            Y_new /= 2
         A_vals.append(A_new)
         L_vals.append(L_new)
         Y_vals.append(Y_new)
