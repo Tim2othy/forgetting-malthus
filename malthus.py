@@ -7,6 +7,7 @@ BETA = 0.2
 GAMMA = 0.5
 DELTA = 0.05
 PHI = 0.3
+SIGMA = 0.6
 N = 0.01
 
 L_0 = 1.0
@@ -17,7 +18,7 @@ k_grid = np.linspace(0, N_STEPS + 1, N_STEPS + 1)
 
 
 def Y(A, L) -> float:
-    return A * L ** (1 - BETA)
+    return A**SIGMA * L ** (1 - BETA)
 
 
 def dot_A(L, A) -> float:
