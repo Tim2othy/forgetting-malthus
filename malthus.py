@@ -42,6 +42,8 @@ def plot_solo():
     L_vals = [L_0]
     Y_vals = [Y(A_0, L_0)]
 
+    y_vals = [Y_vals[0] / L_0]
+
     for t in range(steps):
         A_old = A_vals[t]
         L_old = L_vals[t]
@@ -55,16 +57,19 @@ def plot_solo():
         L_vals.append(L_new)
         Y_vals.append(Y_new)
 
+        y_vals.append(Y_new / L_new)
+
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
 
-    ax1.plot(k_grid, Y_vals, label="GDP", color="orange")
-    ax1.plot(k_grid, A_vals, label="Level of A", color="blue", linestyle=":")
-    ax1.plot(k_grid, L_vals, label="Population", color="green", linestyle="-.")
+    ax1.plot(k_grid, np.log(Y_vals), label="GDP", color="orange")
+    ax1.plot(k_grid, np.log(A_vals), label="Level of A", color="blue", linestyle=":")
+    ax1.plot(k_grid, np.log(L_vals), label="Population", color="green", linestyle="-.")
     ax1.set_xlabel("steps")
     ax1.set_ylabel("number")
     ax1.legend()
     ax1.set_title("")
 
+    ax2.plot(k_grid, np.log(y_vals), label="GDP per capita", color="green")
     ax2.set_xlabel("")
     ax2.set_ylabel("")
     ax2.legend()
