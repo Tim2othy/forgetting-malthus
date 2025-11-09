@@ -1,0 +1,78 @@
+"""Testing when Mathusian dynamics with forgetting leads to sustained growth in Knowledge"""
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+BETA = 0.2
+GAMMA = 0.5
+DELTA = 0.05
+PHI = 0.3
+N = 0.01
+
+L_0 = 2.0
+A_0 = 1.5
+
+
+def Y(A, L):
+    return A * L ** (1 - BETA)
+
+
+def dot_A(L, A):
+    return GAMMA * L * A**PHI - DELTA * A
+
+
+def dot_L(L, Y):
+
+    y = Y / L
+    return L * f(y)
+
+
+def f(y):
+    if y < 0:
+        print("All humans are dead")
+    return max(y - 1, N)
+
+
+steps = 5
+k_grid = np.linspace(0, steps + 1, steps + 1)
+
+
+def plot_solo():
+    Y_vals = []
+
+    A_t = A_0
+    L_t = L_0
+
+    A_vals = [A_0]
+    L_vals = [L_0]
+    Y_vals = [Y(A_0, L_0)]
+
+    for t in range(steps):
+        Y_t = Y(A_vals[t], L_vals[t])
+        Y_vals.append(Y_t)
+
+        A_new = A_vals[t] + dot_A(L_vals[t], A_vals[t])
+        A_vals.append(A_new)
+        L_new = L_vals[t] + dot_L(L_vals[t], Y_t)
+        L_vals.append(L_new)
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
+
+    ax1.plot(k_grid, Y_vals, label="GDP", color="orange")
+    ax1.plot(k_grid, A_vals, label="Level of A", color="blue", linestyle=":")
+    ax1.plot(k_grid, L_vals, label="Population", color="green", linestyle="-.")
+    ax1.set_xlabel("steps")
+    ax1.set_ylabel("number")
+    ax1.legend()
+    ax1.set_title("")
+
+    ax2.set_xlabel("")
+    ax2.set_ylabel("")
+    ax2.legend()
+    ax2.set_title("")
+
+    plt.tight_layout()
+    plt.show()
+
+
+plot_solo()
