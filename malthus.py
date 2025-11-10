@@ -1,5 +1,7 @@
 """Testing when Mathusian dynamics with forgetting leads to sustained growth in Knowledge"""
 
+import random
+
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -13,6 +15,8 @@ N = 0.01
 L_0 = 1.0
 A_0 = 1.0
 N_STEPS = 100
+
+chance = 2
 
 k_grid = np.linspace(0, N_STEPS + 1, N_STEPS + 1)
 
@@ -49,7 +53,10 @@ def plot_solo() -> None:
         L_old = L_vals[t]
         Y_old = Y_vals[t]
 
-        A_new = A_old + dot_A(L_old, A_old)
+        new_idea = 0
+        if random.random() > 1 - 1 / chance:
+            new_idea = dot_A(L_old, A_old) * chance
+        A_new = A_old + new_idea
         L_new = L_old + dot_L(L_old, Y_old)
         Y_new = Y(A_new, L_new)
 
