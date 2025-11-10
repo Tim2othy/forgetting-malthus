@@ -16,6 +16,7 @@ L_0 = 1.0
 A_0 = 1.0
 N_STEPS = 100
 
+shock = False
 chance = 2
 
 k_grid = np.linspace(0, N_STEPS + 1, N_STEPS + 1)
@@ -60,8 +61,9 @@ def plot_solo() -> None:
         L_new = L_old + dot_L(L_old, Y_old)
         Y_new = Y(A_new, L_new)
 
-        if t == 50:
+        if t == 50 and shock:
             Y_new /= 2
+
         A_vals.append(A_new)
         L_vals.append(L_new)
         Y_vals.append(Y_new)
