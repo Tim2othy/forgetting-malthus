@@ -5,16 +5,16 @@ import random
 import matplotlib.pyplot as plt
 import numpy as np
 
-BETA = 0.2
-GAMMA = 0.5
+BETA = 0.7
+GAMMA = 0.051
 DELTA = 0.05
 PHI = 0.3
 SIGMA = 0.6
-N = 0.01
+N = 0.03
 
 L_0 = 1.0
 A_0 = 1.0
-N_STEPS = 100
+N_STEPS = 1000
 
 shock = False
 chance = 2
