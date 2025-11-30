@@ -97,3 +97,27 @@ $
 $
 Is this the right specification?
 We can see what this predicts and then add in, possibly population later into the forgetting mechanism.
+
+== Notes on Clark
+
+Gregory clark writes
+
+#quote(block: true)[
+  [...] Japan in 1700-1867,[...] [and]
+  England in 1450, [were] both societies in a Malthusian equilibrium with birth rates equal to death rates.]
+
+but is this the case?
+If there is constant growth in $A$ shouldn't population slowly be growing?
+
+#quote(block: true)[
+
+  Similarly Sillitoe reports of Papua New Guinea tribes that though they vary enormously
+  culturally, they are all “big men” societies where “Big men achieve their positions because they excel
+  in the things that matter in life, they are good talkers, they are courageous, they are skillful in
+  exchanges of wealth.”  (Sillitoe, 1978, 253).  Success in these societies - status, pigs and wives –
+  comes not from skill in production or innovation, but from success in war, social intercourse, and
+  social negotiations.  ]
+
+Yes, but can we imagine a world like this with no technological progress at all?
+And for how many years? A million? 100 million?
+It seems somewhat hard to imagine.
